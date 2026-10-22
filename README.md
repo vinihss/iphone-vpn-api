@@ -18,6 +18,18 @@ API REST em Python para uso experimental no iPhone, com banco SQLite, autentica�
 
 ## Instalação no a-Shell
 
+Com o repositório público, instalação direta via sh:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/vinihss/iphone-vpn-api/main/install.sh | sh
+```
+
+Depois, inicie o servidor:
+
+```sh
+python3 api.py serve --host 0.0.0.0 --port 8765
+```
+
 Copie os arquivos para uma pasta acessível no a-Shell. Depois:
 
 ```sh
