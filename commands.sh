@@ -1,8 +1,10 @@
 #!/bin/sh
 set -eu
+if command -v python3 >/dev/null 2>&1; then PY=python3; else PY=python; fi
 case "${1:-}" in
-  init) python3 api.py init ;;
-  token|rotate-token) python3 api.py rotate-token ;;
-  serve) shift; python3 api.py serve "$@" ;;
-  *) echo "Uso: $0 {init|rotate-token|serve [--host HOST] [--port PORT]}"; exit 2 ;;
+  "") exec "$PY" api.py --help ;;
+  test) sh tests/cli.sh ;;
+  test-http) sh tests/integration.sh ;;
+  token) shift; exec "$PY" api.py rotate-token "$@" ;;
+  *) exec "$PY" api.py "$@" ;;
 esac
